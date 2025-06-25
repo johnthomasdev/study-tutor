@@ -130,11 +130,3 @@ Edit these constants in `app.py`:
 1. Fork the repository.
 2. Create a feature branch.
 3. Submit a pull request with a clear description.
-
-## License
-
-MIT License (see [LICENSE](LICENSE)).
-
-## Contact
-
-Open a GitHub issue or contact the repository owner for support.
