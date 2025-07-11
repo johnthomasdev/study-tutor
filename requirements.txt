@@ -1,29 +1,13 @@
-# Core FastAPI Backend Dependencies
 fastapi>=0.104.1
 uvicorn>=0.24.0
 python-multipart>=0.0.6
 pydantic>=2.4.2
 python-dotenv>=1.0.0
-
-# LangChain and AI/ML Dependencies
 langchain>=0.0.300
 langchain-core>=0.1.0
 langchain-community>=0.1.0
 langchain-ollama>=0.3.3
 langchain-text-splitters>=0.0.1
-
-# Vector Database and Embeddings
 chromadb>=0.4.0
 ollama>=0.5.1
-
-# PDF Processing and Text Handling
 pypdf>=3.17.0
-
-# Optional: Development and Testing (uncomment if needed)
-# streamlit>=1.25.0  # For legacy Streamlit interface if needed
-# jupyter>=1.0.0     # For rag.ipynb notebook development
-# notebook>=6.4.0    # Jupyter notebook support
-
-# Optional: Additional utilities (uncomment if needed)
-# requests>=2.31.0   # HTTP requests if needed
-# python-magic>=0.4.27  # File type detection if needed

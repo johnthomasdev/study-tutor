@@ -15,8 +15,7 @@
 
 - **📁 PDF Upload & Processing**: Upload multiple PDFs, automatically processed and indexed
 - **🧠 AI Question Answering**: Powered by Ollama's `llama3` model with RAG architecture
-- **💬 Conversation Memory**: Maintains context across questions within sessions
-- **🔄 Session Management**: Multi-user support with isolated sessions
+- **🔄 Session Management**: Multi-user support with isolated sessions and document storage
 - **📱 Modern UI**: Responsive React frontend with file drag-and-drop
 - **🔍 Source Attribution**: Answers include references to source documents
 - **⚡ Real-time Processing**: Async processing with progress feedback
@@ -53,7 +52,7 @@
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd ktu
+cd study-tutor
 ```
 
 ### 2. Backend Setup
@@ -105,16 +104,8 @@ ollama list
 - `POST /upload-pdfs/{session_id}` - Upload PDFs for processing
 - `POST /ask/{session_id}` - Ask questions about uploaded materials
 - `GET /session/{session_id}` - Get session information
-- `DELETE /session/{session_id}/memory` - Clear conversation memory
 - `GET /generate-session` - Generate new session ID
 - `GET /health` - Health check
-
-### Example Questions
-
-- "What are the key principles of renewable energy?"
-- "Explain the difference between solar thermal and photovoltaic systems"
-- "What factors affect biogas production efficiency?"
-- "Compare flat plate collectors vs concentrating collectors"
 
 ## Project Structure
 
@@ -143,7 +134,6 @@ EMBED_MODEL = "nomic-embed-text"   # Embedding model
 CHUNK_SIZE = 1000                  # Document chunk size
 CHUNK_OVERLAP = 200                # Chunk overlap
 TOP_K = 3                          # Retrieved documents per query
-MEMORY_K = 10                      # Conversation memory window
 ```
 
 ### Frontend Configuration
@@ -178,10 +168,10 @@ npm run build
 
 ## Session Management
 
-- **Session Isolation**: Each user session has isolated document storage and conversation memory
+- **Session Isolation**: Each user session has isolated document storage and processing
 - **Automatic Cleanup**: Expired sessions are automatically cleaned up
 - **Session Timeout**: 2-hour timeout for inactive sessions
-- **Memory Management**: Conversation memory limited to last 10 exchanges
+- **Stateless Design**: Each question is answered independently without conversation context
 
 ## Limitations
 
@@ -189,29 +179,3 @@ npm run build
 - **Local Models**: Requires Ollama models to be available locally
 - **Session Storage**: Sessions are stored in memory (not persistent across restarts)
 - **File Size**: Large PDFs may impact processing time
-
-## Future Improvements
-
-- [ ] Support for additional file formats (Word, text, etc.)
-- [ ] Persistent session storage with database
-- [ ] User authentication and authorization
-- [ ] Batch processing for large document sets
-- [ ] Advanced search and filtering capabilities
-- [ ] Export conversation history
-- [ ] Mobile app development
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-For issues, questions, or contributions, please open an issue in the GitHub repository.
