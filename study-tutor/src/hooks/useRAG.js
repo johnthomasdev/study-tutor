@@ -67,17 +67,7 @@ export const useRAG = () => {
     }
   }, [question, sessionId])
 
-  const handleClearMemory = useCallback(async () => {
-    if (!sessionId) return
 
-    try {
-      await apiService.clearMemory(sessionId)
-      setConversations([])
-      setError('')
-    } catch (err) {
-      setError(err.response?.data?.detail || 'Failed to clear memory')
-    }
-  }, [sessionId])
 
   const handleSetError = useCallback((errorMessage) => {
     setError(errorMessage)
@@ -97,7 +87,6 @@ export const useRAG = () => {
     handleFilesSelected,
     handleUpload,
     handleAskQuestion,
-    handleClearMemory,
     handleSetError,
     setQuestion,
   }

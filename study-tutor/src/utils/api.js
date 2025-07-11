@@ -38,10 +38,7 @@ export const apiService = {
     return response.data
   },
 
-  clearMemory: async (sessionId) => {
-    const response = await api.delete(`/session/${sessionId}/memory`)
-    return response.data
-  },
+
 
   generateSession: async () => {
     const response = await api.get('/generate-session')

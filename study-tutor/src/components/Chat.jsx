@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { MessageSquare, ArrowRight, Loader2, RotateCcw } from 'lucide-react'
+import { MessageSquare, ArrowRight, Loader2 } from 'lucide-react'
 
 const Chat = ({ 
   question, 
@@ -7,8 +7,7 @@ const Chat = ({
   onSubmit, 
   isAsking, 
   conversations = [],
-  isVisible = true,
-  onClearMemory
+  isVisible = true
 }) => {
   const messagesEndRef = useRef(null)
   const textareaRef = useRef(null)
@@ -45,11 +44,7 @@ const Chat = ({
     }
   }
 
-  const handleClearMemory = () => {
-    if (onClearMemory) {
-      onClearMemory()
-    }
-  }
+
 
   const deduplicateSources = (sources) => {
     if (!sources || !Array.isArray(sources)) return []
@@ -81,34 +76,9 @@ const Chat = ({
           <div className="flex items-center gap-3" style={{ color: 'var(--color-text-primary)' }}>
             <MessageSquare size={26} style={{ color: 'var(--color-accent-green)' }} />
             <h2 className="m-0 font-bold text-xl tracking-tight" style={{ color: 'var(--color-text-primary)' }}>
-              Chat with Document
+              Chat with Documents
             </h2>
           </div>
-          
-          {conversations.length > 0 && (
-            <button
-              onClick={handleClearMemory}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
-              style={{ 
-                backgroundColor: 'var(--color-bg-tertiary)',
-                color: 'var(--color-text-secondary)',
-                border: `1px solid var(--color-border-primary)`
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = 'var(--color-accent-error)'
-                e.target.style.color = 'white'
-                e.target.style.borderColor = 'var(--color-accent-error)'
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'var(--color-bg-tertiary)'
-                e.target.style.color = 'var(--color-text-secondary)'
-                e.target.style.borderColor = 'var(--color-border-primary)'
-              }}
-            >
-              <RotateCcw size={16} />
-              Clear Memory
-            </button>
-          )}
         </div>
       </div>
       
@@ -133,7 +103,7 @@ const Chat = ({
               Start a conversation
             </div>
             <div className="text-sm max-w-md px-4" style={{ color: 'var(--color-text-tertiary)' }}>
-              Ask any question about your uploaded documents. I have memory and can reference our previous conversations!
+              Ask any question about your uploaded documents. Each question is answered independently based on the document content.
             </div>
           </div>
         ) : (

@@ -16,7 +16,6 @@ function App() {
     handleFilesSelected,
     handleUpload,
     handleAskQuestion,
-    handleClearMemory,
     handleSetError,
     setQuestion,
   } = useRAG()
@@ -56,7 +55,6 @@ function App() {
                   isAsking={isAsking}
                   conversations={conversations}
                   isVisible={true}
-                  onClearMemory={handleClearMemory}
                 />
               </div>
             </div>
